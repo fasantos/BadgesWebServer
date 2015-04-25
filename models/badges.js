@@ -1,6 +1,6 @@
 'use strict';
 
-var host = process.env.BADGES_HOST || 'http://localhost:4000/badges';
+var host = process.env.BADGES_HOST || 'https://afternoon-atoll-4718.herokuapp.com/badges';
 var request = require('request');
 
 /*
