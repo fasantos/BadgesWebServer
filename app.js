@@ -3,6 +3,14 @@
 var express = require('express');
 var app = express();
 
+/*
+* Allows third party clients to connect to the socket server
+*/
+app.use(function (req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	next();
+});
+
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
@@ -14,7 +22,7 @@ var badges = require('./models/badges');
 */
 var port = process.env.PORT || 3000
 server.listen(port, function(){
-	console.log('Server is running on port %d\nTo turn of the server, press ctrl-c', port);
+	console.log('Server is running on port %d\nTo turn off the server, press ctrl-c', port);
 });
 
 /*
@@ -33,9 +41,9 @@ app.get('/', function(req, res){
 * Watch for connections
 */
 io.sockets.on('connection', function(socket){
-	badges.get(function(err, data){
+	badges.get(function(err, badgeList){
 		if (err) {return};
-		data.forEach(function(badge){
+		badgeList.forEach(function(badge){
 			socket.emit('badge', badge);
 		});
 	});
