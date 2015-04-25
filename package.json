@@ -1,0 +1,17 @@
+{
+  "name": "BadgesWebServer",
+  "version": "1.0.0",
+  "description": "node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": " (ISC)",
+  "license": "ISC",
+  "dependencies": {
+    "axon": "^2.0.1",
+    "express": "^4.12.3",
+    "request": "^2.55.0",
+    "socket.io": "^1.3.5"
+  }
+}
